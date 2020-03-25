@@ -1,0 +1,14 @@
+$displays: (inline block inline-block flex inline-flex none);
+
+@each $d in $displays{
+	.d-#{$d}{
+		display: $d;
+	}
+}
+
+.d-visible{
+	visibility: visible;
+}
+.d-hidden{
+	visibility: hidden;
+}

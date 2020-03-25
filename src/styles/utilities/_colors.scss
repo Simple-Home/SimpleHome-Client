@@ -1,0 +1,83 @@
+@each $key,$color in $primary-colors{
+	.bg-primary-#{$key}{
+		background-color: $color;
+	}
+	.example-color.bg-primary-#{$key}{
+		background-color: $color;
+		display: inline-block;
+		width: 80px;
+		height: 80px;
+		padding: 4px;
+		border-radius: 5px;
+
+		&::after{
+			text-shadow: 0 0 2px rgba(0,0,0,.5);
+			content: '#{$color}';
+			color: white;
+			text-transform: uppercase;
+		}
+	}
+}
+
+@each $key,$color in $red-colors{
+	.bg-red-#{$key}{
+		background-color: $color;
+	}
+	.example-color.bg-red-#{$key}{
+		background-color: $color;
+		display: inline-block;
+		width: 80px;
+		height: 80px;
+		padding: 4px;
+		border-radius: 5px;
+
+		&::after{
+			text-shadow: 0 0 2px rgba(0,0,0,.5);
+			content: '#{$color}';
+			color: white;
+			text-transform: uppercase;
+		}
+	}
+}
+
+@each $key,$color in $green-colors{
+	.bg-green-#{$key}{
+		background-color: $color;
+	}
+	.example-color.bg-green-#{$key}{
+		background-color: $color;
+		display: inline-block;
+		width: 80px;
+		height: 80px;
+		padding: 4px;
+		border-radius: 5px;
+
+		&::after{
+			text-shadow: 0 0 2px rgba(0,0,0,.5);
+			content: '#{$color}';
+			color: white;
+			text-transform: uppercase;
+		}
+	}
+}
+
+@each $key,$color in $yellow-colors{
+	.bg-yellow-#{$key}{
+		background-color: $color;
+	}
+	.example-color.bg-yellow-#{$key}{
+		background-color: $color;
+		display: inline-block;
+		width: 80px;
+		height: 80px;
+		padding: 4px;
+		border-radius: 5px;
+
+		&::after{
+			text-shadow: 0 0 2px rgba(0,0,0,.5);
+			content: '#{$color}';
+			color: white;
+			text-transform: uppercase;
+		}
+	}
+}

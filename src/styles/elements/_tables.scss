@@ -1,0 +1,29 @@
+.table{
+	border-spacing: 0;
+	border-collapse: collapse;
+	width: 100%;
+
+	th{
+		font-weight: 600;
+		border-bottom: 2px solid $control-border-color;
+		text-align: left;
+	}
+
+	td,th{
+		padding: .5em .75em;
+	}
+
+	td{
+		border-top: 1px solid $control-border-color;
+	}
+}
+
+.table.is-striped{
+	tbody tr:nth-child(odd){
+		background: rgba($light-color, .5);
+	}
+}
+
+.table tbody tr.is-active{
+	background: map-get($primary-colors , '200');
+}

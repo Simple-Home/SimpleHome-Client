@@ -1,0 +1,58 @@
+$spacing: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24);
+
+@each $i in $spacing{
+	$value: $i * 0.25rem;
+	
+	.p-#{$i}{
+		padding: $value !important;
+	}
+	.pt-#{$i}{
+		padding-top: $value !important;
+	}
+	.pr-#{$i}{
+		padding-right: $value !important;
+	}
+	.pb-#{$i}{
+		padding-bottom: $value !important;
+	}
+	.pl-#{$i}{
+		padding-left: $value !important;
+	}
+	.px-#{$i}{
+		padding-left: $value !important;
+		padding-right: $value !important;
+	}
+	.py-#{$i}{
+		padding-top: $value !important;
+		padding-bottom: $value !important;
+	}
+	
+	.m-#{$i}{
+		margin: $value !important;
+	}
+	.mt-#{$i}{
+		margin-top: $value !important;
+	}
+	.mr-#{$i}{
+		margin-right: $value !important;
+	}
+	.mb-#{$i}{
+		margin-bottom: $value !important;
+	}
+	.ml-#{$i}{
+		margin-left: $value !important;
+	}
+	.mx-#{$i}{
+		margin-left: $value !important;
+		margin-right: $value !important;
+	}
+	.my-#{$i}{
+		margin-top: $value !important;
+		margin-bottom: $value !important;
+	}
+}
+
+.mx-auto{
+	margin-right: auto;
+	margin-left: auto;
+}

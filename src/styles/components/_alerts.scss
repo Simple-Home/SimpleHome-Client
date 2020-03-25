@@ -1,0 +1,28 @@
+.alert{
+	border-left: 4px solid map-get($primary-colors , '400');
+	background-color: map-get($primary-colors , '100');
+	color: map-get($primary-colors , '600');
+	padding: .75rem 1rem;
+	margin-bottom: 1rem;
+}
+
+.aler-heading{
+	margin-bottom: .25rem;
+	margin-top: 0;
+}
+
+.alert-danger{
+	background-color: map-get($red-colors , '100');
+	border-color: map-get($red-colors , '400');
+	color: map-get($red-colors , '500');
+}
+.alert-success{
+	background-color: map-get($green-colors , '100');
+	border-color: map-get($green-colors , '400');
+	color: map-get($green-colors , '700');
+}
+.alert-warning{
+	background-color: map-get($yellow-colors , '100');
+	border-color: map-get($yellow-colors , '400');
+	color: map-get($yellow-colors , '700');
+}

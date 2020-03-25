@@ -1,0 +1,153 @@
+// Typogrpahy
+$base-font: 'Metropolis', sans-serif !default;
+$base-font-color: #1c1d22 !default;
+$base-line-height: 1.5 !default;
+
+// Colors
+
+$blue-colors:(
+	'900' : hsl(222, 40, 16),
+	'800' : hsl(222, 45, 23),
+	'700' : hsl(222, 50, 30),
+	'600' : hsl(222, 60, 40),
+	'500' : hsl(222, 70, 50),
+	'400' : hsl(222, 70, 65),
+	'300' : hsl(222, 70, 80),
+	'200' : hsl(222, 70, 90),
+	'100' : hsl(222, 70, 95)
+) !default;
+
+$grey-colors:(
+	'900' : hsl(222, 20, 20),
+	'800' : hsl(222, 25, 25),
+	'700' : hsl(222, 20, 35),
+	'600' : hsl(222, 20, 45),
+	'500' : hsl(222, 20, 60),
+	'400' : hsl(222, 20, 70),
+	'300' : hsl(222, 20, 80),
+	'200' : hsl(222, 20, 90),
+	'100' : hsl(222, 20, 95)
+) !default;
+
+$red-colors:(
+	'900' : hsl(347, 40, 16),
+	'800' : hsl(347, 45, 23),
+	'700' : hsl(347, 50, 30),
+	'600' : hsl(347, 60, 40),
+	'500' : hsl(347, 70, 50),
+	'400' : hsl(347, 70, 65),
+	'300' : hsl(347, 70, 80),
+	'200' : hsl(347, 70, 90),
+	'100' : hsl(347, 70, 95)
+) !default;
+
+$green-colors:(
+	'900' : hsl(138, 40, 20),
+	'800' : hsl(138, 45, 25),
+	'700' : hsl(138, 60, 30),
+	'600' : hsl(138, 60, 40),
+	'500' : hsl(138, 76%, 45%),
+	'400' : hsl(138, 50, 65),
+	'300' : hsl(138, 40, 80),
+	'200' : hsl(138, 30, 90),
+	'100' : hsl(138, 20, 96)
+) !default;
+
+$yellow-colors:(
+	'900' : hsl(41, 40, 16),
+	'800' : hsl(41, 45, 23),
+	'700' : hsl(41, 50, 30),
+	'600' : hsl(41, 60, 40),
+	'500' : hsl(41, 70, 50),
+	'400' : hsl(41, 70, 65),
+	'300' : hsl(41, 70, 80),
+	'200' : hsl(41, 70, 90),
+	'100' : hsl(41, 70, 95)
+) !default;
+
+$primary-colors: $green-colors;
+
+$primary-color: map-get($primary-colors , '500') !default;
+$primary-color-dark: darken($primary-color, 3%) !default;
+$primary-color-light: lighten($primary-color, 3%) !default;
+$secondary-color: map-get($primary-colors , '200') !default;
+$secondary-color-dark: darken($secondary-color, 3%) !default;
+$secondary-color-light: lighten($secondary-color, 3%) !default;
+
+$primary-link-color: $primary-color;
+$primary-link-color-dark: $primary-color-dark;
+
+$dark-color: #182239 !default;
+$light-color: #EBF0FB !default;
+$background-color: #F0F1F5 !default;
+
+// Controls
+$control-border-width: 1px !default;
+$control-border-color: map-get($primary-colors , '200') !default;
+$control-border-radius: 3px !default;
+$control-background-color: white !default;
+
+$control-padding-x: 1.2em !default;
+$control-padding-y: .5em !default;
+
+$input-padding-x: .8em !default;
+$input-padding-y: .5em !default;
+
+$control-focus-color: rgba(15, 108, 239, .3) !default;
+
+
+
+
+
+
+// Grid
+$enable-grid-classes: true !default;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grid-breakpoints: map-merge(
+  (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+  ),
+  $grid-breakpoints
+);
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$container-max-widths: map-merge(
+  (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px
+  ),
+  $container-max-widths
+);
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:                12 !default;
+$grid-gutter-width:           14px !default;
+
