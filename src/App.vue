@@ -1,26 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
+
+    <div id="nav" class="nav">
+      <router-link tag="li" class="nav-item" active-class="is-active" to="/"><a><i class="fa fa-home"></i></a></router-link>
+      <router-link tag="li" class="nav-item" active-class="is-active" to="/scenes"><a><i class="fa fa-film"></i></a></router-link>
+      <router-link tag="li" class="nav-item" active-class="is-active" to="/automations"><a><i class="fa fa-clock-o"></i></a></router-link>
+      <router-link tag="li" class="nav-item" active-class="is-active" to="/settings"><a><i class="fa fa-bars"></i></a></router-link>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
 @import "@/styles/main.scss";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

@@ -1,5 +1,5 @@
 // Typogrpahy
-$base-font: 'Metropolis', sans-serif !default;
+$base-font: "Nunito Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif!default;
 $base-font-color: #1c1d22 !default;
 $base-line-height: 1.5 !default;
 
@@ -83,7 +83,7 @@ $background-color: #F0F1F5 !default;
 
 // Controls
 $control-border-width: 1px !default;
-$control-border-color: map-get($primary-colors , '200') !default;
+$control-border-color: map-get($grey-colors , '200') !default;
 $control-border-radius: 3px !default;
 $control-background-color: white !default;
 
