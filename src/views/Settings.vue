@@ -1,5 +1,7 @@
 <template>
   <div class="page">
-    <h1>Settings</h1>
+    <header class="header">
+      <h1 class="header-name">Settings</h1>
+    </header>
   </div>
 </template>

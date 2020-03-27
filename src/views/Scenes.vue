@@ -1,5 +1,10 @@
 <template>
   <div class="page">
-    <h1>Scenes</h1>
+    <header class="header">
+      <h1 class="header-name">Scenes</h1>
+      <button class="button is-primary button-add">
+        <i class="fa fa-plus"></i>
+      </button>
+    </header>
   </div>
 </template>

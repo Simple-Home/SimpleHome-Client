@@ -8,5 +8,13 @@ module.exports = {
         `
       }
     }
+  },
+
+  pwa: {
+    name: 'SimpleHome',
+    themeColor: '#1cca50',
+    manifestOptions: {
+      background_color: '#F0F1F5'
+    }
   }
 };
