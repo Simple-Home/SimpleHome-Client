@@ -9,45 +9,41 @@
 
     <div class="tabs-scroll">
       <div class="nav-tabs">
-        <div class="nav-item is-active">
-          <a href="#">Living room</a>
-        </div>
-        <div class="nav-item">
-          <a href="#">Kitchen</a>
-        </div>
-        <div class="nav-item">
-          <a href="#">Bedroom</a>
-        </div>
-        <div class="nav-item">
-          <a href="#">Bathroom</a>
+        <div class="nav-item" v-for="room in rooms" :key="room.id" :class="{'is-active': room.id === activeRoom}">
+          <a @click="switchRoom(room.id)">{{room.name}}</a>
         </div>
       </div>
     </div>
 
-    <div class="devices">
-      <div class="device device-3">
-        <div class="device-content">device large</div>
-      </div>
-      <div class="device device-3">
-        <div class="device-content">device large</div>
-      </div>
-      <div class="device">
-        <div class="device-content">device small</div>
-      </div>
-      <div class="device">
-        <div class="device-content">device small</div>
-      </div>
-      <div class="device">
-        <div class="device-content">device small</div>
-      </div>
+    <div class="rooms">
+      <room v-for="room in rooms" :room="room" :key="room.id" :active="room.id === activeRoom"/>
     </div>
-
   </div>
 </template>
 
 <script>
+import Room from '@/components/Room.vue'
+
 export default {
   name: 'Home',
-  components: {}
+  components: {
+    Room
+  },
+  data: function () {
+    return {
+      activeRoom: 1,
+      rooms: [
+        { id: 1, name: 'Living room' },
+        { id: 2, name: 'Kitchen' },
+        { id: 3, name: 'Bedroom' },
+        { id: 4, name: 'Bathroom' }
+      ]
+    }
+  },
+  methods: {
+    switchRoom: function (roomId) {
+      this.activeRoom = roomId
+    }
+  }
 }
 </script>

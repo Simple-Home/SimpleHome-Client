@@ -1,4 +1,6 @@
 module.exports = {
+  publicPath: '/projekty/simplehome-client/',
+
   css: {
     loaderOptions: {
       sass: {
@@ -17,4 +19,4 @@ module.exports = {
       background_color: '#F0F1F5'
     }
   }
-};
+}
