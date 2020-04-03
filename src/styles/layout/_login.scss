@@ -1,0 +1,22 @@
+.page.page-login{
+	padding: 15px;
+	color: #999FB3;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.page-login h1{
+	margin-top: 30px;
+}
+
+.login-form{
+	width: 100%;
+	max-width: 280px;
+	margin: 0 auto;
+}
+
+.login-footer{
+	text-align: center;
+}

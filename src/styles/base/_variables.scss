@@ -46,7 +46,7 @@ $green-colors:(
 	'800' : hsl(138, 45, 25),
 	'700' : hsl(138, 60, 30),
 	'600' : hsl(138, 60, 40),
-	'500' : hsl(138, 76%, 45%),
+	'500' : rgb(28, 202, 80),
 	'400' : hsl(138, 50, 65),
 	'300' : hsl(138, 40, 80),
 	'200' : hsl(138, 30, 90),
@@ -67,10 +67,10 @@ $yellow-colors:(
 
 $primary-colors: $green-colors;
 
-$primary-color: map-get($primary-colors , '500') !default;
+$primary-color: #00CC69 !default;
 $primary-color-dark: darken($primary-color, 3%) !default;
 $primary-color-light: lighten($primary-color, 3%) !default;
-$secondary-color: map-get($primary-colors , '200') !default;
+$secondary-color: map-get($grey-colors , '200') !default;
 $secondary-color-dark: darken($secondary-color, 3%) !default;
 $secondary-color-light: lighten($secondary-color, 3%) !default;
 
@@ -82,21 +82,18 @@ $light-color: #EBF0FB !default;
 $background-color: #F0F1F5 !default;
 
 // Controls
-$control-border-width: 1px !default;
+$control-border-width: 0px !default;
 $control-border-color: map-get($grey-colors , '200') !default;
-$control-border-radius: 3px !default;
+$control-border-radius: 4px !default;
 $control-background-color: white !default;
 
-$control-padding-x: 1.2em !default;
-$control-padding-y: .5em !default;
+$control-padding-x: 1.2rem !default;
+$control-padding-y: .75rem !default;
 
-$input-padding-x: .8em !default;
-$input-padding-y: .5em !default;
+$input-padding-x: .75rem !default;
+$input-padding-y: .75rem !default;
 
-$control-focus-color: rgba($primary-color, .3) !default;
-
-
-
+$control-focus-color: rgba($primary-color, .2) !default;
 
 
 

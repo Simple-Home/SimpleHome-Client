@@ -28,16 +28,16 @@ html{
 	line-height: $base-line-height;
 	color: $base-font-color;
 	background: $background-color;
-	min-height: 100%;
+	height: 100%;
 }
 
 body{
-	min-height: 100%;
-	padding-bottom: 60px;
+	height: 100%;
 }
 
 a{
 	color: $primary-link-color;
+	text-decoration: none;
 
 	&:hover{
 		color: $primary-link-color-dark;
@@ -86,5 +86,5 @@ p {
 }
 
 #app{
-	min-height: 100%;
+	height: 100%;
 }

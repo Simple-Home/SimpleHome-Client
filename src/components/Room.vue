@@ -19,7 +19,8 @@ export default {
   data: function () {
     return {
       devices: [
-        { id: 0, name: 'Device', value: Math.floor(Math.random() * 15 + 15) + '°C', icon: 'fa-thermometer-half', 'icon-color': '#FF3A3A' }
+        { id: 0, name: 'Tempetarure', value: Math.floor(Math.random() * 15 + 15) + '°C', icon: 'fa-thermometer-half', 'icon-color': '#FF3A3A' },
+        { id: 1, name: 'Humidity', value: Math.floor(Math.random() * 15 + 60) + '%', icon: 'fa-tint', 'icon-color': '#3A6EFF' }
       ]
     }
   }

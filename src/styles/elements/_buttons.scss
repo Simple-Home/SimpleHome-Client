@@ -5,11 +5,11 @@
 	color: map-get($primary-colors, '900');
 	padding: $control-padding-y $control-padding-x;
 	transition: .15s;
-	height: 2.5rem;
+	height: 3rem;
 	display: inline-block;
 	line-height: 1.5;
 	font-size: 1rem;
-	font-weight: 500;
+	font-weight: 600;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
@@ -26,6 +26,19 @@
 	}
 }
 
+.button.is-icon{
+	width: 3rem;
+	padding: .75rem;
+	font-size: 1.25rem;
+	color: #999FB3;
+	background-color: white;
+
+	&:hover{
+		background-color: white;
+		color: rgb(115, 119, 134);
+	}
+}
+
 .button.is-small{
 	padding: $control-padding-y $control-padding-x/1.5;
 	height: 2rem;
@@ -38,8 +51,11 @@
 }
 
 .buttons .button{
-	margin-right: .25rem;
-	margin-bottom: .25rem;
+	margin-bottom: 10px;
+
+	&:not(:nth-last-child(1)){
+		margin-right: 10px;
+	}
 }
 
 .button.is-primary{
@@ -78,4 +94,8 @@
 	border-radius: 50%;
 	box-shadow: 0 0 20px rgba($color: $primary-color, $alpha: 0.4);
 	font-size: 20px;
+}
+
+.button.d-block{
+	width: 100%;
 }

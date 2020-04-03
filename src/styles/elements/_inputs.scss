@@ -1,11 +1,20 @@
 .field{
-	margin-bottom: .8em;
+	margin-bottom: 1rem;
 }
 
 .label{
 	display: block;
-	margin-bottom: .2em;
-	font-weight: 500;
+	margin-bottom: .2rem;
+	font-weight: 600;
+	color: #12141A;
+}
+
+.label small{
+	font-size: .875em;
+}
+
+.label a{
+	float: right;
 }
 
 .input,
@@ -15,7 +24,7 @@
 	border: $control-border-width solid $control-border-color;
 	color: $base-font-color;
 	padding: $input-padding-y $input-padding-x;
-	height: 2.5rem;
+	height: 3rem;
 	line-height: 1.5;
 	background: $control-background-color;
 	width: 100%;
