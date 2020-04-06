@@ -1,7 +1,10 @@
 <template>
   <div class="device">
     <div class="device-content">
-      <i class="device-icon fa" :class="device.icon" v-bind:style="{color: device['icon-color']}"></i>
+      <i class="device-icon fa"
+        :class="device.icon"
+        v-bind:style="{color: device['icon-color']}"
+      ></i>
       <div class="device-value">{{device.value}}</div>
       <div class="device-name">{{device.name}}</div>
     </div>
@@ -11,6 +14,6 @@
 <script>
 export default {
   name: 'Device',
-  props: ['device']
-}
+  props: ['device'],
+};
 </script>

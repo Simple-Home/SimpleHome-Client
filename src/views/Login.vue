@@ -10,14 +10,16 @@
           <input type="text" class="input" v-model="username" required>
         </div>
         <div class="field">
-          <label class="label">Password <router-link to='/recover-password'><small>Forgot Password</small></router-link></label>
+          <label class="label">Password
+            <router-link to='/recover-password'><small>Forgot Password</small></router-link>
+          </label>
           <input type="password" class="input" v-model="password" required>
         </div>
         <button class="button is-primary d-block mb-4" type="submit">Sign in</button>
         <p class="text-center mb-4">Or sign in with</p>
         <div class="buttons text-center">
-          <button:button class="button is-icon"><i class="fa fa-github"></i></button:button>
-          <button:button class="button is-icon"><i class="fa fa-google"></i></button:button>
+          <button type="button" class="button is-icon"><i class="fa fa-github"></i></button>
+          <button type="button" class="button is-icon"><i class="fa fa-google"></i></button>
         </div>
       </form>
     </div>
@@ -30,16 +32,19 @@
 <script>
 export default {
   name: 'Login',
-  data: function () {
+  data() {
     return {
       username: '',
-      password: ''
-    }
+      password: '',
+    };
   },
   methods: {
-    login: function () {
-
-    }
-  }
-}
+    login() {
+      this.$store.dispatch('retrieveToken', {
+        username: this.username,
+        password: this.password,
+      });
+    },
+  },
+};
 </script>

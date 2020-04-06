@@ -9,7 +9,11 @@
 
     <div class="tabs-scroll">
       <div class="nav-tabs">
-        <div class="nav-item" v-for="room in rooms" :key="room.id" :class="{'is-active': room.id === activeRoom}">
+        <div class="nav-item"
+          v-for="room in rooms"
+          :key="room.id"
+          :class="{'is-active': room.id === activeRoom}"
+        >
           <a @click="switchRoom(room.id)">{{room.name}}</a>
         </div>
       </div>
@@ -22,28 +26,28 @@
 </template>
 
 <script>
-import Room from '@/components/Room.vue'
+import Room from '@/components/Room.vue';
 
 export default {
   name: 'Home',
   components: {
-    Room
+    Room,
   },
-  data: function () {
+  data() {
     return {
       activeRoom: 1,
       rooms: [
         { id: 1, name: 'Living room' },
         { id: 2, name: 'Kitchen' },
         { id: 3, name: 'Bedroom' },
-        { id: 4, name: 'Bathroom' }
-      ]
-    }
+        { id: 4, name: 'Bathroom' },
+      ],
+    };
   },
   methods: {
-    switchRoom: function (roomId) {
-      this.activeRoom = roomId
-    }
-  }
-}
+    switchRoom(roomId) {
+      this.activeRoom = roomId;
+    },
+  },
+};
 </script>

@@ -8,21 +8,25 @@
 </template>
 
 <script>
-import Device from '@/components/Device.vue'
+import Device from '@/components/Device.vue';
 
 export default {
   name: 'Room',
   props: ['room', 'active'],
   components: {
-    Device
+    Device,
   },
-  data: function () {
+  data() {
     return {
       devices: [
-        { id: 0, name: 'Tempetarure', value: Math.floor(Math.random() * 15 + 15) + '°C', icon: 'fa-thermometer-half', 'icon-color': '#FF3A3A' },
-        { id: 1, name: 'Humidity', value: Math.floor(Math.random() * 15 + 60) + '%', icon: 'fa-tint', 'icon-color': '#3A6EFF' }
-      ]
-    }
-  }
-}
+        {
+          id: 0, name: 'Tempetarure', value: `${Math.floor(Math.random() * 15 + 15)}°C`, icon: 'fa-thermometer-half', 'icon-color': '#FF3A3A',
+        },
+        {
+          id: 1, name: 'Humidity', value: `${Math.floor(Math.random() * 15 + 60)}%`, icon: 'fa-tint', 'icon-color': '#3A6EFF',
+        },
+      ],
+    };
+  },
+};
 </script>
