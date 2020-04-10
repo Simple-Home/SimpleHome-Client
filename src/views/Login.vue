@@ -15,7 +15,13 @@
           </label>
           <input type="password" class="input" v-model="password" required>
         </div>
-        <button class="button is-primary d-block mb-4" type="submit">Sign in</button>
+        <button
+          class="button is-primary d-block mb-4"
+          type="submit"
+          :class="{ 'is-loading': isLoading }"
+        >
+          Sign in
+        </button>
         <p class="text-center mb-4">Or sign in with</p>
         <div class="buttons text-center">
           <button type="button" class="button is-icon"><i class="fa fa-github"></i></button>
@@ -36,13 +42,21 @@ export default {
     return {
       username: '',
       password: '',
+      isLoading: false,
     };
   },
   methods: {
     login() {
+      this.isLoading = true;
       this.$store.dispatch('retrieveToken', {
         username: this.username,
         password: this.password,
+      }).then(() => {
+        this.isLoading = false;
+        this.$router.push({ name: 'Home' });
+      }).catch((err) => {
+        this.isLoading = false;
+        alert(err);
       });
     },
   },

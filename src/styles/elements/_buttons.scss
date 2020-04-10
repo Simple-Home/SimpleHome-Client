@@ -4,7 +4,7 @@
 	border-radius: $control-border-radius;
 	color: map-get($primary-colors, '900');
 	padding: $control-padding-y $control-padding-x;
-	transition: .15s;
+	transition: background .15s;
 	height: 3rem;
 	display: inline-block;
 	line-height: 1.5;
@@ -98,4 +98,26 @@
 
 .button.d-block{
 	width: 100%;
+}
+
+.button.is-loading{
+	color: transparent !important;
+	position: relative;
+	transition: 0;
+	pointer-events: none;
+
+	&::before{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -18px;
+		margin-left: -18px;
+		border: 6px solid rgba(255,255,255,.4);
+		border-top: 6px solid #FFF;
+		border-radius: 50%;
+		width: 24px;
+		height: 24px;
+		animation: spin 1s linear infinite;
+	}
 }

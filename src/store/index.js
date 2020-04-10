@@ -5,26 +5,46 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    token: localStorage.getItem('token') || null,
+  },
+  getters: {
+    loggedIn(state) {
+      return state.token !== null;
+    },
   },
   mutations: {
+    retrieveToken(state, token) {
+      state.token = token;
+    },
   },
   actions: {
     retrieveToken(context, credentials) {
-      fetch('/api/apiFront.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      }).then((res) => {
-        console.log(res);
-        if (res.status === 200) {
-          // todo
-        } else {
-          throw new Error(res.error);
-        }
-      }).catch((err) => {
-        alert(err);
+      return new Promise((resolve, reject) => {
+        fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(credentials),
+        })
+          .then((response) => {
+            console.log(response);
+            if (response.status === 401) {
+              throw new Error('Wrong credentials');
+            } else if (response.status !== 200) {
+              throw new Error(`${response.status} - ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            localStorage.setItem('token', data.token);
+            context.commit('retrieveToken', data.token);
+            resolve(data);
+          })
+          .catch((err) => {
+            console.log(err);
+            reject(err);
+          });
       });
     },
   },

@@ -24,7 +24,7 @@ export default {
   name: 'App',
   computed: {
     loggedIn() {
-      return false;
+      return this.$store.getters.loggedIn;
     },
   },
 };

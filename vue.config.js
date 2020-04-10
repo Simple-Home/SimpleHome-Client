@@ -26,7 +26,7 @@ module.exports = {
         target: 'https://dev.steelants.cz',
         changeOrigin: true,
         pathRewrite: {
-          '^/api/': '/vasek/home/',
+          '^/api/': '/vasek/home_rest/',
         }
       },
     },
