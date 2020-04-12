@@ -45,15 +45,23 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue'),
+    component: () => import('../views/auth/Login.vue'),
     meta: {
       requiresVisitor: true,
     },
   },
   {
+    path: '/logout',
+    name: 'Logout',
+    component: () => import('../views/auth/Logout.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     path: '/register',
     name: 'Register',
-    component: () => import('../views/Register.vue'),
+    component: () => import('../views/auth/Register.vue'),
     meta: {
       requiresVisitor: true,
     },
@@ -61,7 +69,7 @@ const routes = [
   {
     path: '/recover-password',
     name: 'RecoverPassword',
-    component: () => import('../views/RecoverPassword.vue'),
+    component: () => import('../views/auth/RecoverPassword.vue'),
     meta: {
       requiresVisitor: true,
     },

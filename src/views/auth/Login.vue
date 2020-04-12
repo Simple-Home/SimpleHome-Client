@@ -1,7 +1,7 @@
 <template>
   <div class="page page-login">
     <h1 class="text-center">
-      <img src="img/logo-login.svg" alt="SimpleHome" class="img-resposive" width="220">
+      <img src="img/logo-login.svg" alt="SimpleHome" class="img-responsive" height="160">
     </h1>
     <div class="login-form">
       <form @submit.prevent="login">
@@ -11,7 +11,9 @@
         </div>
         <div class="field">
           <label class="label">Password
-            <router-link to='/recover-password'><small>Forgot Password</small></router-link>
+            <router-link to='/recover-password' tabindex="-1">
+              <small>Forgot Password</small>
+            </router-link>
           </label>
           <input type="password" class="input" v-model="password" required>
         </div>

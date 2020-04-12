@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <alerts/>
+
     <router-view/>
 
     <div id="nav" class="nav" v-if="loggedIn">
@@ -20,8 +22,13 @@
 </template>
 
 <script>
+import Alerts from '@/components/Alerts.vue';
+
 export default {
   name: 'App',
+  components: {
+    Alerts,
+  },
   computed: {
     loggedIn() {
       return this.$store.getters.loggedIn;

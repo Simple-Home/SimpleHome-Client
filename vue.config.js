@@ -21,14 +21,6 @@ module.exports = {
   },
 
   devServer: {
-    proxy: {
-      '^/api/': {
-        target: 'https://dev.steelants.cz',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api/': '/vasek/home_rest/',
-        }
-      },
-    },
+    proxy: 'https://dev.steelants.cz',
   },
 };

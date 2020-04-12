@@ -16,11 +16,14 @@ export default new Vuex.Store({
     retrieveToken(state, token) {
       state.token = token;
     },
+    destroyToken(state) {
+      state.token = null;
+    },
   },
   actions: {
     retrieveToken(context, credentials) {
       return new Promise((resolve, reject) => {
-        fetch('/api/login', {
+        fetch('/vasek/home_rest/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -28,7 +31,6 @@ export default new Vuex.Store({
           body: JSON.stringify(credentials),
         })
           .then((response) => {
-            console.log(response);
             if (response.status === 401) {
               throw new Error('Wrong credentials');
             } else if (response.status !== 200) {
@@ -42,7 +44,27 @@ export default new Vuex.Store({
             resolve(data);
           })
           .catch((err) => {
-            console.log(err);
+            reject(err);
+          });
+      });
+    },
+    destroyToken(context) {
+      return new Promise((resolve, reject) => {
+        fetch('/vasek/home_rest/logout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${context.state.token}`,
+          },
+        })
+          .then((data) => {
+            localStorage.removeItem('token');
+            context.commit('destroyToken');
+            resolve(data);
+          })
+          .catch((err) => {
+            localStorage.removeItem('token');
+            context.commit('destroyToken');
             reject(err);
           });
       });
