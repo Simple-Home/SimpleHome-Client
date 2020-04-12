@@ -11,16 +11,17 @@
       <div class="nav-tabs">
         <div class="nav-item"
           v-for="room in rooms"
-          :key="room.id"
-          :class="{'is-active': room.id === activeRoom}"
+          :key="room.room_id"
+          :class="{'is-active': room.room_id === activeRoom}"
         >
-          <a @click="switchRoom(room.id)">{{room.name}}</a>
+          <a @click="switchRoom(room.room_id)">{{room.name}}</a>
         </div>
       </div>
     </div>
 
     <div class="rooms">
-      <room v-for="room in rooms" :room="room" :key="room.id" :active="room.id === activeRoom"/>
+      <room v-for="room in rooms" :room="room"
+      :key="room.room_id" :active="room.room_id === activeRoom"/>
     </div>
   </div>
 </template>
@@ -33,21 +34,23 @@ export default {
   components: {
     Room,
   },
-  data() {
-    return {
-      activeRoom: 1,
-      rooms: [
-        { id: 1, name: 'Living room' },
-        { id: 2, name: 'Kitchen' },
-        { id: 3, name: 'Bedroom' },
-        { id: 4, name: 'Bathroom' },
-      ],
-    };
+  computed: {
+    rooms() {
+      return this.$store.state.rooms;
+    },
+    activeRoom() {
+      return this.$store.state.activeRoom;
+    },
   },
   methods: {
     switchRoom(roomId) {
-      this.activeRoom = roomId;
+      this.$store.commit('setActiveRoom', roomId);
     },
+  },
+  created() {
+    if (this.$store.state.rooms.length === 0) {
+      this.$store.dispatch('retrieveRooms');
+    }
   },
 };
 </script>
