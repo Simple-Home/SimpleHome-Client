@@ -1,6 +1,6 @@
 module.exports = {
   publicPath: '/projekty/simplehome-client/',
-
+  lintOnSave: false,
   css: {
     loaderOptions: {
       sass: {
@@ -22,5 +22,9 @@ module.exports = {
 
   devServer: {
     proxy: 'https://dev.steelants.cz',
+    https: true,
+    watchOptions: {
+      poll: true,
+    },
   },
 };

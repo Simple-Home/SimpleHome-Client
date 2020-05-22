@@ -55,6 +55,13 @@
 	font-weight: 800;
 }
 
+.device-value small{
+	color: #575E75;
+	font-size: 16px;
+	vertical-align: top;
+	font-weight: 600;
+}
+
 .device-icon{
 	font-size: 20px;
 }
@@ -62,5 +69,7 @@
 .device-name{
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
 	max-width: 100%;
+	color: #575E75;
 }

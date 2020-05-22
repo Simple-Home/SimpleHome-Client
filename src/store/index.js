@@ -31,7 +31,7 @@ export default new Vuex.Store({
   actions: {
     retrieveToken(context, credentials) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home_rest/login', {
+        fetch('/vasek/home-update/api/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export default new Vuex.Store({
     },
     destroyToken(context) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home_rest/logout', {
+        fetch('/vasek/home-update/api/logout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -79,8 +79,8 @@ export default new Vuex.Store({
     },
     retrieveRooms(context) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home_rest/rooms', {
-          method: 'POST',
+        fetch('/vasek/home-update/api/rooms', {
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${context.state.token}`,
