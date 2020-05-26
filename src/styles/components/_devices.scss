@@ -31,6 +31,31 @@
 	}
 }
 
+.device.is-loading{
+	transition: 0;
+	pointer-events: none;
+
+	&>*{
+		opacity: .5;
+	}
+
+	&::before{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -18px;
+		margin-left: -18px;
+		border: 6px solid rgba(255,255,255,.4);
+		border-top: 6px solid $primary-color;
+		border-radius: 50%;
+		width: 24px;
+		height: 24px;
+		animation: spin 1s linear infinite;
+		z-index: 10;
+	}
+}
+
 .device-3{
 	grid-column: span 3;
 	grid-row: span 3;

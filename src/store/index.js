@@ -27,8 +27,41 @@ export default new Vuex.Store({
     setActiveRoom(state, roomId) {
       state.activeRoom = roomId;
     },
+    runWidget(state, data){
+      state.rooms
+        .find(room => room.room_id === data.room_id).widgets
+        .find(widget => widget.subdevice_id === data.subdevice_id).value = data.value;
+    }
   },
   actions: {
+    runWidget(context, widget){
+      return new Promise((resolve, reject) => {
+        fetch(`/vasek/home-update/api/widgets/${widget.subdevice_id}/run`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${context.state.token}`,
+          },
+        })
+        .then((response) => {
+          if (response.status !== 200) {
+            throw new Error(`${response.status} - ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          context.commit('runWidget', {
+            'value': data.value,
+            'subdevice_id': widget.subdevice_id,
+            'room_id': widget.room_id,
+          });
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+      });
+    },
     retrieveToken(context, credentials) {
       return new Promise((resolve, reject) => {
         fetch('/vasek/home-update/api/login', {
