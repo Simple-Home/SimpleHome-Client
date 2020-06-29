@@ -1,0 +1,31 @@
+.avatars{
+	padding-left: 30px;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.avatar{
+	margin-left: -20px;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	border: 2px solid #E2E8F2;
+	background: #E2E8F2;
+	overflow: hidden;
+}
+
+.avatar img{
+	width: 36px;
+	height: 36px;
+	display: block;
+}
+
+.avatar.is-offline{
+	order: -1;
+	z-index: -1;
+	position: relative;
+}
+
+.avatar.is-offline img{
+	opacity: .5;
+}

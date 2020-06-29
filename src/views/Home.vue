@@ -1,7 +1,10 @@
 <template>
   <div class="page">
     <header class="header">
-      <h1 class="header-name">Home</h1>
+      <div class="header-part d-flex items-center">
+        <h1 class="header-name">Home</h1>
+        <avatars/>
+      </div>
       <button class="button is-primary button-add">
         <i class="fa fa-plus"></i>
       </button>
@@ -28,11 +31,13 @@
 
 <script>
 import Room from '@/components/Room.vue';
+import Avatars from '@/components/Avatars.vue';
 
 export default {
   name: 'Home',
   components: {
     Room,
+    Avatars,
   },
   computed: {
     rooms() {

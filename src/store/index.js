@@ -8,6 +8,7 @@ export default new Vuex.Store({
     token: localStorage.getItem('token') || null,
     rooms: [],
     activeRoom: null,
+    users: [],
   },
   getters: {
     loggedIn(state) {
@@ -31,7 +32,10 @@ export default new Vuex.Store({
       state.rooms
         .find(room => room.room_id === data.room_id).widgets
         .find(widget => widget.subdevice_id === data.subdevice_id).value = data.value;
-    }
+    },
+    retrieveUsers(state, users){
+      state.users = users
+    },
   },
   actions: {
     runWidget(context, widget){
@@ -129,6 +133,31 @@ export default new Vuex.Store({
             console.log(data);
             context.commit('retrieveRooms', data);
             context.commit('setActiveRoom', data[0].room_id);
+            resolve(data);
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    },
+    retrieveUsers(context) {
+      return new Promise((resolve, reject) => {
+        fetch('/vasek/home-update/api/users', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${context.state.token}`,
+          },
+        })
+          .then((response) => {
+            if (response.status !== 200) {
+              throw new Error(`${response.status} - ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            context.commit('retrieveUsers', data);
             resolve(data);
           })
           .catch((err) => {
