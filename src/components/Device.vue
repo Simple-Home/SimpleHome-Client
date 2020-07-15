@@ -37,6 +37,22 @@ export default {
           icon = 'fa-door-closed';
         }
       }
+      if (this.device.type === 'wifi') {
+        icon = 'fa-wifi';
+      }
+      if (this.device.type === 'batt') {
+        icon = 'fa-car-battery';
+      }
+      if (this.device.type === 'temp_cont') {
+        icon = 'fa-fire';
+      }
+      if (this.device.type === 'move') {
+        if (this.device.value) {
+          icon = 'fa-running';
+        } else {
+          icon = 'fa-male';
+        }
+      }
       return icon;
     },
     showValue() {
