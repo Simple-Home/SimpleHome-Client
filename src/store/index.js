@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem('token') || null,
     rooms: [],
-    activeRoom: null,
+    activeRoom: parseInt(localStorage.getItem('activeRoom')) || null,
     users: [],
   },
   getters: {
@@ -27,6 +27,7 @@ export default new Vuex.Store({
     },
     setActiveRoom(state, roomId) {
       state.activeRoom = roomId;
+      localStorage.setItem('activeRoom', roomId);
     },
     runWidget(state, data){
       state.rooms
@@ -130,9 +131,10 @@ export default new Vuex.Store({
             return response.json();
           })
           .then((data) => {
-            console.log(data);
             context.commit('retrieveRooms', data);
-            context.commit('setActiveRoom', data[0].room_id);
+            if(context.state.activeRoom === null){
+              context.commit('setActiveRoom', data[0].room_id);
+            }
             resolve(data);
           })
           .catch((err) => {

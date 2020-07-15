@@ -9,7 +9,7 @@
 	width: 40px;
 	height: 40px;
 	border-radius: 100%;
-	border: 2px solid #E2E8F2;
+	border: 2px solid $primary-color;
 	background: #E2E8F2;
 	overflow: hidden;
 }
@@ -24,6 +24,7 @@
 	order: -1;
 	z-index: -1;
 	position: relative;
+	border: 2px solid #E2E8F2;
 }
 
 .avatar.is-offline img{

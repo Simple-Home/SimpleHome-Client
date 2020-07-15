@@ -17,6 +17,20 @@ module.exports = {
     themeColor: '#1cca50',
     manifestOptions: {
       background_color: '#F0F1F5',
+      shortcuts: [
+        {
+          name: "Settings",
+          description: "Settings",
+          url: "./setting",
+          icons: [
+            {
+              src: "./img/icons/android-chrome-512x512.png",
+              type: "image/png",
+              purpose: "any"
+            }
+          ]
+        }
+      ]
     },
   },
 
