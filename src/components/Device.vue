@@ -32,9 +32,9 @@ export default {
       }
       if (this.device.type === 'door') {
         if (this.device.value) {
-          icon = 'fa-door-open';
-        } else {
           icon = 'fa-door-closed';
+        } else {  
+          icon = 'fa-door-open';
         }
       }
       if (this.device.type === 'wifi') {
