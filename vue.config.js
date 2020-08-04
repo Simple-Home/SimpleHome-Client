@@ -21,7 +21,31 @@ module.exports = {
         {
           name: "Settings",
           description: "Settings",
-          url: "./setting",
+          url: "./#/setting",
+          icons: [
+            {
+              src: "./img/icons/android-chrome-512x512.png",
+              type: "image/png",
+              purpose: "any"
+            }
+          ]
+        },
+        {
+          name: "Scenes",
+          description: "Settings",
+          url: "./#/scenes",
+          icons: [
+            {
+              src: "./img/icons/android-chrome-512x512.png",
+              type: "image/png",
+              purpose: "any"
+            }
+          ]
+        },
+        {
+          name: "Automation",
+          description: "Settings",
+          url: "./#/automation",
           icons: [
             {
               src: "./img/icons/android-chrome-512x512.png",
