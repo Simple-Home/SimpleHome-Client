@@ -74,6 +74,14 @@ const routes = [
       requiresVisitor: true,
     },
   },
+  {
+    path: '/device-detail',
+    name: 'DeviceDetail',
+    component: () => import('../components/DeviceDetail.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({
