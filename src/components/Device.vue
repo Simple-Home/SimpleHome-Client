@@ -33,12 +33,21 @@ export default {
       if (this.device.type === 'door') {
         if (this.device.value) {
           icon = 'fa-door-closed';
-        } else {  
+        } else {
           icon = 'fa-door-open';
         }
       }
       if (this.device.type === 'wifi') {
         icon = 'fa-wifi';
+      }
+      if (this.device.type === 'vol_cont') {
+        icon = 'fa-volume-up';
+      }
+      if (this.device.type === 'temp') {
+        icon = 'fa-thermometer-half';
+      }
+      if (this.device.type === 'humi') {
+        icon = 'fa-tint';
       }
       if (this.device.type === 'batt') {
         icon = 'fa-car-battery';
@@ -77,13 +86,15 @@ export default {
   methods: {
     run() {
       if (this.device.type === 'on/off') {
-        this.isLoading = true;
-        this.$store.dispatch('runWidget', this.device).then(() => {
-          this.isLoading = false;
-        }).catch((err) => {
-          this.isLoading = false;
-          alert(err);
-        });
+        if(this.isLoading === false){
+          this.isLoading = true;
+          this.$store.dispatch('runWidget', this.device).then(() => {
+            this.isLoading = false;
+          }).catch((err) => {
+            this.isLoading = false;
+            alert(err);
+          });
+        }
       }
     },
   },
