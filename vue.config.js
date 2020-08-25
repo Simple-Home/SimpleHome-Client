@@ -54,7 +54,10 @@ module.exports = {
             }
           ]
         }
-      ]
+      ],
+      workboxOptions: {
+        skipWaiting: true
+      }
     },
   },
 
