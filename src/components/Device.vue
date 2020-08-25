@@ -53,6 +53,15 @@ export default {
           icon = 'fa-male';
         }
       }
+      if (this.device.type === 'weather') {
+        if (this.device.value == 'Clouds') {
+          icon = 'fa-cloud';
+        } else if (this.device.value == 'Sun') {
+          icon = 'fa-sun';
+        } else if (this.device.value == 'Rain') {
+          icon = 'fa-cloud-showers-heavy';
+        }
+      }
       return icon;
     },
     showValue() {
