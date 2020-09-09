@@ -1,26 +1,31 @@
+<template>
+  <div>
+    Chart: {{$route.params.id}}
+    <div class="p-4">
+      <device-detail-chart :chartdata="chartdata"/>
+    </div>
+  </div>
+</template>
+
 <script>
-  import { Line } from 'vue-chartjs'
+  import DeviceDetailChart from '@/components/DeviceDetailChart.vue';
 
   export default {
-    extends: Line,
+    name: 'DeviceDetail',
+    components: {
+      DeviceDetailChart,
+    },
     data: () => ({
       chartdata: {
         datasets: [
           {
-            label: 'Data One',
+            label: 'Detail ID',
             backgroundColor: '#f87979',
-            data: [40, 10, 23]
-          }
-        ]
+            data: [40, 20, 23, 34]
+          },
+        ],
+        labels: [40, 20, 23, 34],
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    }),
-
-    mounted () {
-      this.renderChart(this.chartdata, this.options)
-    }
+    })
   }
 </script>

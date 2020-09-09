@@ -75,7 +75,7 @@ const routes = [
     },
   },
   {
-    path: '/device-detail',
+    path: '/device-detail/:id',
     name: 'DeviceDetail',
     component: () => import('../components/DeviceDetail.vue'),
     meta: {

@@ -1,23 +1,31 @@
 <template>
-  <div class="device" :class="{ 'is-loading': isLoading }" v-on:click="run">
+  <div class="device" :class="{ 'is-loading': isLoading }" v-on:click="run"
+    v-long-press="300"
+    v-on:long-press-start.stop="openDetail">
     <div class="device-content">
       <i class="device-icon fa" :class="icon"></i>
       <div class="device-value" v-if="showValue">
         {{device.value}}
         <small>{{device.unit}}</small>
       </div>
+        <div v-if="detailVisible">
+          DETAIL
+        </div>
       <div class="device-name">{{device.name}}</div>
     </div>
   </div>
 </template>
 
 <script>
+import LongPress from 'vue-directive-long-press'
+
 export default {
   name: 'Device',
   props: ['device'],
   data() {
     return {
-      isLoading: false
+      isLoading: false,
+      detailVisible: false,
     };
   },
   computed: {
@@ -49,8 +57,8 @@ export default {
       if (this.device.type === 'humi') {
         icon = 'fa-tint';
       }
-      if (this.device.type === 'batt') {
-        icon = 'fa-car-battery';
+      if (this.device.type === 'battery') {
+        icon = 'fa-battery-full';
       }
       if (this.device.type === 'temp_cont') {
         icon = 'fa-fire';
@@ -63,11 +71,12 @@ export default {
         }
       }
       if (this.device.type === 'weather') {
-        if (this.device.value == 'Clouds') {
+        icon = 'fa-cloud';
+        if (this.device.value > 800) {
           icon = 'fa-cloud';
-        } else if (this.device.value == 'Sun') {
+        } else if (this.device.value == 800) {
           icon = 'fa-sun';
-        } else if (this.device.value == 'Rain') {
+        } else if (this.device.value >= 500 && this.device.value < 600) {
           icon = 'fa-cloud-showers-heavy';
         }
       }
@@ -77,6 +86,7 @@ export default {
       if (
         this.device.type === 'on/off'
         || this.device.type === 'door'
+        || this.device.type === 'weather'
       ) {
         return false;
       }
@@ -96,6 +106,9 @@ export default {
           });
         }
       }
+    },
+    openDetail(){
+      this.$router.push('device-detail/'+this.device.subdevice_id);
     },
   },
 };

@@ -4,6 +4,7 @@
 	grid-column-gap: 12px;
 	grid-row-gap: 12px;
 	margin-top: 10px;
+	user-select: none;
 
 	@media screen and (min-width: 600px){
 		grid-template-columns: repeat(9, 1fr);

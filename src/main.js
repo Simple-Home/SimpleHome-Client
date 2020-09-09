@@ -3,8 +3,11 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
+import LongPress from 'vue-directive-long-press'
 
 Vue.config.productionTip = false;
+
+Vue.directive('long-press', LongPress)
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
