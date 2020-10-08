@@ -80,6 +80,18 @@ export default {
           icon = 'fa-cloud-showers-heavy';
         }
       }
+      if (this.device.type === 'confirmed') {
+        icon = 'fa-procedures';
+      }
+      if (this.device.type === 'deaths') {
+        icon = 'fa-heartbeat';
+      }
+      if (this.device.type === 'recovered') {
+        icon = 'fa-fire';
+      }
+      if (this.device.type === 'active') {
+        icon = 'fa-virus';
+      }
       return icon;
     },
     showValue() {
