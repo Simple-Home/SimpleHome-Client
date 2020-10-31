@@ -7,6 +7,8 @@
     <div class="col-12 col-sm-9 mx-auto mt-4" v-if="settings !== null">
         <label>UPTIME: <b>{{settings.uptime}}</b></label><br>
         <label>SERVER TIME: <b>{{settings.serverTime}}</b></label><br>
+        <label>SERVER TIMEZONE: <b>{{settings.serverTimeZone}}</b></label><br>
+
         <hr>
         <label>CPU: <b>{{settings.cpu_load}}%</b></label><br>
         <label>CPU Usage: </label>
