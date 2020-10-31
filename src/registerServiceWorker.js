@@ -22,14 +22,9 @@ if (process.env.NODE_ENV === 'production') {
     updated() {
       console.log('New content is available; please refresh.');
       /* Refreshing Cash on New Update */
-      if(window.navigator && navigator.serviceWorker) {
-        navigator.serviceWorker.getRegistrations()
-        .then(function(registrations) {
-          for(let registration of registrations) {
-            registration.unregister();
-          }
-        });
-      }
+      document.dispatchEvent(
+        new CustomEvent("swUpdated", { detail: registration })
+      );
     },
     offline() {
       console.log('No internet connection found. App is running in offline mode.');
