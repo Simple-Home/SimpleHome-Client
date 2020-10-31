@@ -8,9 +8,9 @@
         <label>UPTIME: <b>{{settings.uptime}}</b></label><br>
         <label>SERVER TIME: <b>{{settings.serverTime}}</b></label><br>
         <hr>
-        <label>CPU: <b>{{settings.cpu_load*100}}%</b></label><br>
+        <label>CPU: <b>{{settings.cpu_load}}%</b></label><br>
         <label>CPU Usage: </label>
-        <progress :value="settings.cpu_load" max="1"></progress><br>
+        <progress :value="settings.cpu_load" max="100"></progress><br>
         <hr>
         <label>RAM TOTAL: <b>{{settings.ramTotal}}</b></label><br>
         <label>RAM FREE: <b>{{settings.ramFree}}</b></label><br>
