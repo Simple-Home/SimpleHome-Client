@@ -1,3 +1,7 @@
+.text-gray{
+	color: #9EA6BE;
+}
+
 @each $key,$color in $primary-colors{
 	.bg-primary-#{$key}{
 		background-color: $color;

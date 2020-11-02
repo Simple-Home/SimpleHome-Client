@@ -8,9 +8,6 @@
         {{device.value}}
         <small>{{device.unit}}</small>
       </div>
-        <div v-if="detailVisible">
-          DETAIL
-        </div>
       <div class="device-name">{{device.name}}</div>
     </div>
   </div>
@@ -25,11 +22,13 @@ export default {
   data() {
     return {
       isLoading: false,
-      detailVisible: false,
     };
   },
   computed: {
     icon() {
+      if(this.device.icon != null){
+        return this.device.icon;
+      }
       let icon = 'fa-fa';
       if (this.device.type === 'on/off') {
         if (this.device.value) {

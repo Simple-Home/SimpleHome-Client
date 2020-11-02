@@ -1,10 +1,10 @@
 <template>
   <div id="app">
+    <alert-update/>
+
     <alerts/>
 
     <router-view/>
-
-    <AlertUpdate/>
 
     <div id="nav" class="nav" v-if="loggedIn">
       <router-link tag="div" class="nav-item" active-class="is-active" to="/" exact>
