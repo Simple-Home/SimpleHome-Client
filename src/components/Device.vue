@@ -1,12 +1,15 @@
 <template>
-  <div class="device" :class="{ 'is-loading': isLoading }" v-on:click="run"
+  <div class="device" :class="{ 'is-loading': isLoading, 'is-offline': device.connection_error }" v-on:click="run"
     v-long-press="300"
     v-on:long-press-start.stop="openDetail">
     <div class="device-content">
-      <i class="device-icon fa" :class="icon"></i>
-      <div class="device-value" v-if="showValue">
-        {{device.value}}
-        <small>{{device.unit}}</small>
+      <div class="device-head">
+        <i class="device-icon fa" :class="icon"></i>
+        <div class="device-value">
+          <div v-if="showValue">
+            {{device.value}}<small>{{device.unit}}</small>
+          </div>
+        </div>
       </div>
       <div class="device-name">{{device.name}}</div>
     </div>
