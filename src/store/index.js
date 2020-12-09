@@ -31,9 +31,15 @@ export default new Vuex.Store({
       localStorage.setItem('activeRoom', roomId);
     },
     runWidget(state, data){
-      state.rooms
-        .find(room => room.room_id === data.room_id).widgets
-        .find(widget => widget.subdevice_id === data.subdevice_id).value = data.value;
+      let roomIndex = state.rooms.findIndex(room => room.room_id == data.room_id);
+
+      if(roomIndex >= 0){
+        Object.keys(state.rooms[roomIndex].widgets).forEach(key => {
+          if(state.rooms[roomIndex].widgets[key].subdevice_id == data.subdevice_id){
+            state.rooms[roomIndex].widgets[key].value = data.value;
+          }
+        })
+      }
     },
     retrieveUsers(state, users){
       state.users = users;
