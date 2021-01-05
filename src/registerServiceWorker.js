@@ -22,7 +22,6 @@ if (Notification.permission === "granted") {
   }
 }
 
-
 register(`service-worker.js`, {
   ready() {
     console.log(
@@ -73,7 +72,6 @@ function subscribeFirebase($registration) {
       messaging.usePublicVapidKey(
         "BDYQ7X7J7PX0aOFNqB-CivQeqLq4-SqCxQJlDfJ6yNnQeYRoK8H2KOqxHRh47fLrbUhC8O3tve67MqJAIqox7Ng"
       );
-
       messaging.getToken().then(function(token) {
         console.log("Token: ", token);
         console.log(JSON.stringify({ token: token }));
@@ -107,4 +105,39 @@ function subscribeFirebase($registration) {
       "fa fa-bell-slash-o bell";
   }
 }
+
+self.addEventListener("push", function(event) {
+  if (event.data) {
+    var data = event.data.json();
+    var notOptions = {
+      body: data.notification.body,
+      icon: data.notification.image || null
+    };
+    if (data.data) {
+      console.log("dataFound");
+      console.log(data.data.data);
+      notOptions.actions = JSON.parse(data.data.actions);
+      notOptions.data = JSON.parse(data.data.data);
+    }
+    event.waitUntil(
+      self.registration.showNotification(data.notification.title, notOptions)
+    );
+  }
+});
+
+self.addEventListener("notificationclick", function(event) {
+  if (event.notification) {
+    if (event.notification.data) {
+      var data = JSON.parse(event.notification.data.data);
+      if (data[event.action]) {
+        console.log(data);
+        console.log(data);
+
+        console.log(data[event.action]);
+        clients.openWindow("" + data[event.action]);
+      }
+    }
+  }
+  clients.openWindow("/");
+});
 
