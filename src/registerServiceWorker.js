@@ -83,7 +83,7 @@ function subscribeFirebase($registration) {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
           body: JSON.stringify({
-            token: token,
+            pushtoken: token,
           }),
         })
         .then((response) => {
