@@ -76,7 +76,7 @@ function subscribeFirebase($registration) {
         console.log("Token: ", token);
         console.log(JSON.stringify({ token: token }));
         //FIX: New URL
-        hub
+        axios
           .post(
             "/api/users/subscribe",
             {
