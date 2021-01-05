@@ -56,7 +56,8 @@ module.exports = {
         }
       ],
       workboxOptions: {
-        skipWaiting: true
+        skipWaiting: true,
+        swSrc: "src/service-worker.js",
       }
     },
   },
