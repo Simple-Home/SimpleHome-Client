@@ -3,5 +3,6 @@ Auth:
 - [ ] Register
 - [ ] Password recovery
 - [x] Logout
+- Delete
 
 Home:
