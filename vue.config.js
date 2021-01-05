@@ -17,6 +17,7 @@ module.exports = {
     themeColor: '#1cca50',
     manifestOptions: {
       background_color: '#F0F1F5',
+      gcm_sender_id: "911528286607",
       shortcuts: [
         {
           name: "Settings",

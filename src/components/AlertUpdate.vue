@@ -4,7 +4,7 @@
     <div class="alert alert-danger d-flex justify-content-between" role="alert">
       <div class="align-self-center">Update availible!</div>
       <div>
-        <button type="button" class="btn btn-primary" v-on:click="refreshApp">
+        <button type="button" class="button is-primary ml-4" v-on:click="refreshApp">
           Refresh
         </button>
       </div>

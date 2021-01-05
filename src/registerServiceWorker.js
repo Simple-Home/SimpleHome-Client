@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import { register } from 'register-service-worker';
 import firebase from "firebase/app";
 import "firebase/messaging";
@@ -72,29 +70,35 @@ function subscribeFirebase($registration) {
       messaging.usePublicVapidKey(
         "BDYQ7X7J7PX0aOFNqB-CivQeqLq4-SqCxQJlDfJ6yNnQeYRoK8H2KOqxHRh47fLrbUhC8O3tve67MqJAIqox7Ng"
       );
-      messaging.getToken().then(function(token) {
-        console.log("Token: ", token);
-        console.log(JSON.stringify({ token: token }));
 
-        fetch(`/vasek/home-update/api/users/subscribe`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-          body: JSON.stringify({
-            pushtoken: token,
-          }),
-        })
-        .then((response) => {
-          return response.json();
-        })
-        .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error);
+     let pushtoken = localStorage.getItem('pushtoken') || null;
+      if(pushtoken == null){
+        messaging.getToken().then(function(token) {
+          console.log("Token: ", token);
+          console.log(JSON.stringify({ token: token }));
+          pushtoken = token;
+          localStorage.setItem('pushtoken', token);
         });
+      }
+
+      fetch(`/vasek/home-update/api/users/subscribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({
+          pushtoken: pushtoken,
+        }),
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
       });
     } else {
       // document.getElementById("sub-identifi").className =
