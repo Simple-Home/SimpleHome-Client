@@ -75,34 +75,34 @@ function subscribeFirebase($registration) {
       messaging.getToken().then(function(token) {
         console.log("Token: ", token);
         console.log(JSON.stringify({ token: token }));
-        //FIX: New URL
-        axios
-          .post(
-            "/api/users/subscribe",
-            {
-              token: token,
-              user_id : userid
-            },
-            {
-              headers: {
-                "Content-Type": "application/json"
-              }
-            }
-          )
-          .then(function(response) {
-            console.log(response);
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
+
+        fetch(`/vasek/home-update/api/users/subscribe`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+          body: JSON.stringify({
+            token: token,
+          }),
+        })
+        .then((response) => {
+          return response.json();
+        })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
       });
     } else {
-      document.getElementById("sub-identifi").className =
-        "fa fa-bell-slash-o bell";
+      // document.getElementById("sub-identifi").className =
+      //   "fa fa-bell-slash-o bell";
     }
   } else {
-    document.getElementById("sub-identifi").className =
-      "fa fa-bell-slash-o bell";
+    // document.getElementById("sub-identifi").className =
+    //   "fa fa-bell-slash-o bell";
   }
 }
 
