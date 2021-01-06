@@ -5,12 +5,12 @@ import "firebase/messaging";
 var startPermission = Notification.permission;
 //ask for notification
 if (Notification.permission === "granted") {
-  const firebaseConfig = {
+  var firebaseConfig = {
     apiKey: "AIzaSyBFZjXvnCMpGurSWEuVgHkE9jD9jxGJhx8",
     authDomain: "test-push-notf.firebaseapp.com",
     databaseURL: "https://test-push-notf.firebaseio.com",
     projectId: "test-push-notf",
-    storageBucket: "",
+    storageBucket: "test-push-notf.appspot.com",
     messagingSenderId: "93473765978",
     appId: "1:93473765978:web:5d959a487fe5382480f663"
   };
@@ -35,9 +35,9 @@ register(`service-worker.js`, {
       }
     });
   },
-  registered($registration) {
+  registered(registration) {
     console.log('Service worker has been registered.');
-    subscribeFirebase($registration);
+    subscribeFirebase(registration);
   },
   cached() {
     console.log('Content has been cached for offline use.');
@@ -60,20 +60,18 @@ register(`service-worker.js`, {
 });
 
 function subscribeFirebase($registration) {
+  //TODO: Only if logged In
   if (Notification.permission === "granted") {
     const messaging = firebase.messaging.isSupported()
       ? firebase.messaging()
       : null;
-    if (messaging != null) {
-      console.log("Service worker has been registered. ", $registration);
-      messaging.useServiceWorker($registration);
-      messaging.usePublicVapidKey(
-        "BDYQ7X7J7PX0aOFNqB-CivQeqLq4-SqCxQJlDfJ6yNnQeYRoK8H2KOqxHRh47fLrbUhC8O3tve67MqJAIqox7Ng"
-      );
 
-     let pushtoken = localStorage.getItem('pushtoken') || null;
+      if (messaging != null) {
+      console.log("Service worker has been registered. ", $registration);
+      var pushtoken = localStorage.getItem('pushtoken') || null;
+
       if(pushtoken == null){
-        messaging.getToken().then(function(token) {
+        messaging.getToken({vapidKey: "BDYQ7X7J7PX0aOFNqB-CivQeqLq4-SqCxQJlDfJ6yNnQeYRoK8H2KOqxHRh47fLrbUhC8O3tve67MqJAIqox7Ng",serviceWorkerRegistration:$registration}).then(function(token) {
           console.log("Token: ", token);
           console.log(JSON.stringify({ token: token }));
           pushtoken = token;
@@ -92,12 +90,15 @@ function subscribeFirebase($registration) {
         }),
       })
       .then((response) => {
+        //alert(response.text)
         return response.json();
       })
       .then(function(response) {
+        //alert(response)
         console.log(response);
       })
       .catch(function(error) {
+        //alert(error)
         console.log(error);
       });
     } else {
@@ -110,3 +111,21 @@ function subscribeFirebase($registration) {
   }
 }
 
+function PrintElem(elem)
+{
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write('<h1>' + document.title  + '</h1>');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+}

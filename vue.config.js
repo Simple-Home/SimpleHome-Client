@@ -1,3 +1,5 @@
+const {InjectManifest} = require('workbox-webpack-plugin');
+
 module.exports = {
   publicPath: '/projekty/simplehome-client/',
   lintOnSave: false,
@@ -15,9 +17,17 @@ module.exports = {
   pwa: {
     name: 'SimpleHome',
     themeColor: '#1cca50',
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      swSrc: 'src/service-worker.js',
+      swDest: 'service-worker.js'
+    },
     manifestOptions: {
       background_color: '#F0F1F5',
-      gcm_sender_id: "911528286607",
+      gcm_sender_id: "93473765978",
+      msTileColor: '#000000',
+      appleMobileWebAppCapable: 'yes',
+      appleMobileWebAppStatusBarStyle: 'black',
       shortcuts: [
         {
           name: "Settings",
@@ -56,10 +66,6 @@ module.exports = {
           ]
         }
       ],
-      workboxOptions: {
-        skipWaiting: true,
-        swSrc: "src/service-worker.js",
-      }
     },
   },
 
