@@ -24,8 +24,10 @@
     <div class="detail-table mt-4">
       <table class="table">
         <tr v-for="record in data.records" :key="record.time">
+          <td><small>{{record.origin}}</small></td>
           <td><small>{{record.time}}</small></td>
           <td><b>{{record.value}}</b></td>
+          <td><small>{{record.execuded}}</small></td>
         </tr>
       </table>
     </div>
