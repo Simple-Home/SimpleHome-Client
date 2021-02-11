@@ -1,7 +1,8 @@
 <template>
-  <div class="device" :class="{ 'is-loading': isLoading, 'is-offline': device.connection_error }" v-on:click="run"
-    v-long-press="300"
-    v-on:long-press-start.stop="openDetail">
+  <v-touch tag="div" class="device" :class="{ 'is-loading': isLoading, 'is-offline': device.connection_error }" v-on:click="run"
+  v-bind:press-options="{time: 300}"
+  v-on:press="openDetail()">
+
     <div class="device-content">
       <div class="device-head">
         <i class="device-icon fa" :class="icon"></i>
@@ -13,11 +14,11 @@
       </div>
       <div class="device-name">{{device.name}}</div>
     </div>
-  </div>
+  </v-touch>
 </template>
 
 <script>
-import LongPress from 'vue-directive-long-press'
+//import LongPress from 'vue-directive-long-press'
 
 export default {
   name: 'Device',
@@ -122,7 +123,7 @@ export default {
       }
     },
     openDetail(){
-      this.$router.push('device-detail/'+this.device.subdevice_id);
+        this.$router.push('device-detail/'+this.device.subdevice_id);
     },
   },
 };

@@ -3,11 +3,13 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
-import LongPress from 'vue-directive-long-press'
+//import LongPress from 'vue-directive-long-press'
+var VueTouch = require('vue-touch')
+Vue.use(VueTouch, {name: 'v-touch'})
 
 Vue.config.productionTip = false;
 
-Vue.directive('long-press', LongPress)
+//Vue.directive('long-press', LongPress)
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
