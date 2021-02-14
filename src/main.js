@@ -7,6 +7,7 @@ import store from './store';
 var VueTouch = require('vue-touch')
 Vue.use(VueTouch, {name: 'v-touch'})
 
+
 Vue.config.productionTip = false;
 
 //Vue.directive('long-press', LongPress)
