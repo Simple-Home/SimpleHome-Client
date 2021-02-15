@@ -73,7 +73,10 @@
       },
       execuded: function(origin)
       {
-        return origin == 1 ? 'fas fa-check' : 'fas fa-times';
+        if(origin != null)
+        {
+          return origin === 1 ? 'fas fa-check' : 'fas fa-times';
+        }
       }
     },
     computed: {
