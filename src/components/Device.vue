@@ -1,5 +1,5 @@
 <template>
-  <v-touch tag="div" class="device" :class="{ 'is-loading': isLoading, 'is-offline': device.connection_error }" v-on:click="run"
+  <v-touch tag="div" class="device" :class="{ 'is-loading': isLoading, 'is-offline': device.connection_error }" v-on:tap="run()"
   v-bind:press-options="{time: 300}"
   v-on:press="openDetail()">
 
