@@ -24,10 +24,10 @@
     <div class="detail-table mt-4">
       <table class="table">
         <tr v-for="record in data.records" :key="record.time">
-          <td><small>{{record.origin}}</small></td>
+          <td><small><i :class="icon(record.origin)"></i></small></td>
           <td><small>{{record.time}}</small></td>
           <td><b>{{record.value}}</b></td>
-          <td><small>{{record.execuded}}</small></td>
+          <td><small><i :class="execuded(record.execuded)"></i></small></td>
         </tr>
       </table>
     </div>
@@ -36,6 +36,8 @@
 
 <script>
   import DeviceDetailChart from '@/components/DeviceDetailChart.vue';
+
+  //řádek 27 je původ, {{record.origin}}<i :class="icon(record.origin)">placeholder</i>
 
   export default {
     name: 'DeviceDetail',
@@ -47,6 +49,32 @@
         data: null,
         loaded: false,
       };
+    },
+    methods:
+    {
+      icon: function(origin)
+      {
+        if(origin == 'google')
+        {
+          return 'fab fa-google';
+        } else 
+        if(origin == 'device')
+        {
+          return 'fas fa-microchip';
+        } else
+        if(origin == 'vue-app')
+        {
+          return 'fab fa-vuejs';
+        } else
+        if(origin == 'automation')
+        {
+          return 'fas fa-cogs';
+        }
+      },
+      execuded: function(origin)
+      {
+        return origin == 1 ? 'fas fa-check' : 'fas fa-times';
+      }
     },
     computed: {
       room() {
