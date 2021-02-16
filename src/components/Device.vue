@@ -18,7 +18,6 @@
 </template>
 
 <script>
-//import LongPress from 'vue-directive-long-press'
 
 export default {
   name: 'Device',

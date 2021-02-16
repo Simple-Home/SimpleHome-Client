@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem('token') || null,
     rooms: [],
+    automations: [],
     activeRoom: parseInt(localStorage.getItem('activeRoom')) || null,
     users: [],
     server: null,
@@ -47,6 +48,10 @@ export default new Vuex.Store({
     retrieveServer(state, server){
       state.server = server;
     },
+    retrieveAutomations(state, automations)
+    {
+      state.automations = automations;
+    }
   },
   actions: {
     runWidget(context, widget){
@@ -145,6 +150,31 @@ export default new Vuex.Store({
             if(context.state.activeRoom === null){
               context.commit('setActiveRoom', data[0].room_id);
             }
+            resolve(data);
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    },
+    retrieveAutomations(context) {
+      console.log('Retrieving automations');
+      return new Promise((resolve, reject) => {
+        fetch('/vasek/home-update/api/automations', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${context.state.token}`,
+          },
+        })
+          .then((response) => {
+            if (response.status !== 200) {
+              throw new Error(`${response.status} - ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            context.commit('retrieveAutomations', data);
             resolve(data);
           })
           .catch((err) => {

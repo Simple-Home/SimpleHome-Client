@@ -82,6 +82,14 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: '/automation-form',
+    name: 'AutomationForm',
+    component: () => import('../components/AutomationForm.vue'),
+    meta: {
+      requiresAuth: true,
+    }
+  },
 ];
 
 const router = new VueRouter({
