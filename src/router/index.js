@@ -83,7 +83,7 @@ const routes = [
     },
   },
   {
-    path: '/automation-form',
+    path: '/automation-form/:id',
     name: 'AutomationForm',
     component: () => import('../components/AutomationForm.vue'),
     meta: {

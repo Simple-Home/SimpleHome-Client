@@ -5,7 +5,7 @@
         <h1 class="header-name">Home</h1>
         <avatars/>
       </div>
-      <button class="button is-primary button-add">
+      <button v-if="true!=true" class="button is-primary button-add">
         <i class="fa fa-plus"></i>
       </button>
     </header>

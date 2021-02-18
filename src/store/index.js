@@ -27,9 +27,9 @@ export default new Vuex.Store({
     retrieveRooms(state, rooms) {
       state.rooms = rooms;
     },
-    setActiveRoom(state, roomId) {
-      state.activeRoom = roomId;
-      localStorage.setItem('activeRoom', roomId);
+    setActiveAutomation(state, automationId){
+      state.activeAutomation = automationId;
+      localStorage.setItem('activeAutomation', automationId);
     },
     runWidget(state, data){
       let roomIndex = state.rooms.findIndex(room => room.room_id == data.room_id);

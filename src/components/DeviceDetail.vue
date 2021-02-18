@@ -37,8 +37,6 @@
 <script>
   import DeviceDetailChart from '@/components/DeviceDetailChart.vue';
 
-  //řádek 27 je původ, {{record.origin}}<i :class="icon(record.origin)">placeholder</i>
-
   export default {
     name: 'DeviceDetail',
     components: {
