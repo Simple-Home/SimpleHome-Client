@@ -50,7 +50,7 @@ export default {
   {
     automations() {
       return this.$store.state.automations;
-    },
+    }
   },
   methods: {
     openForm: function()

@@ -27,6 +27,10 @@ export default new Vuex.Store({
     retrieveRooms(state, rooms) {
       state.rooms = rooms;
     },
+    setActiveRoom(state, roomId) {
+      state.activeRoom = roomId;
+      localStorage.setItem('activeRoom', roomId);
+    },
     setActiveAutomation(state, automationId){
       state.activeAutomation = automationId;
       localStorage.setItem('activeAutomation', automationId);
@@ -158,7 +162,6 @@ export default new Vuex.Store({
       });
     },
     retrieveAutomations(context) {
-      console.log('Retrieving automations');
       return new Promise((resolve, reject) => {
         fetch('/vasek/home-update/api/automations', {
           method: 'GET',
@@ -232,6 +235,24 @@ export default new Vuex.Store({
           });
       });
     },
+    createAutomation(context, automation){
+      return new Promise((resolve, reject) => {
+        fetch('/vasek/home-update/api/automations/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${context.state.token}`,
+          },
+          body: JSON.stringify(automation),
+        })
+          .then((response) => {
+            if(response.status !== 200){
+              throw new Error(`${response.status} - ${response.statusText}`);
+            }
+            return response.json();
+          })
+      })
+    }
   },
   modules: {
   },

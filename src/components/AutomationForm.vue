@@ -9,7 +9,7 @@
             <p> Name: </p>
             <input type="text" v-model="automation.name">
         </div>
-        <div>
+        <div v-if="!true">
             <p> Condition: </p>
             <select>
                 <option selected>Manual</option>
@@ -18,7 +18,7 @@
             </select>
         </div>
         <div class="header-small">
-            <v-touch tag="div" v-on:tap="save()"><i class="fa fa-angle-left"></i> Save</v-touch>
+            <v-touch tag="a" v-on:tap="submit()">{{submitText}}</v-touch>
         </div>
     </div>
 </template>
@@ -39,6 +39,27 @@
                     days: [],
                     month: []
                 },
+            }
+        },
+        methods:
+        {
+            submit()
+            {
+                this.$store.commit('createAutomation', this.automation);
+            }
+        },
+        computed:
+        {
+            submitText: function()
+            {
+                if(this.id == 'new_form')
+                {
+                    return 'Create';
+                }
+                else
+                {
+                    return 'Save';
+                }
             }
         },
         created(){
