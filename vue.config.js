@@ -1,7 +1,7 @@
 const {InjectManifest} = require('workbox-webpack-plugin');
 
 module.exports = {
-  publicPath: '/projekty/simplehome-client/',
+  publicPath: '/vasek/home-client-milanin/',
   lintOnSave: false,
   css: {
     loaderOptions: {

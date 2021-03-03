@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import apiRoot from './api';
 
 Vue.use(Vuex);
 
@@ -60,7 +61,7 @@ export default new Vuex.Store({
   actions: {
     runWidget(context, widget){
       return new Promise((resolve, reject) => {
-        fetch(`/vasek/home-update/api/widgets/${widget.subdevice_id}/run`, {
+        fetch(process.env.VUE_APP_API_ROOT + `widgets/${widget.subdevice_id}/run`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -88,7 +89,7 @@ export default new Vuex.Store({
     },
     retrieveToken(context, credentials) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home-update/api/login', {
+        fetch(process.env.VUE_APP_API_ROOT + 'login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -101,6 +102,7 @@ export default new Vuex.Store({
             } else if (response.status !== 200) {
               throw new Error(`${response.status} - ${response.statusText}`);
             }
+            console.log(response);
             return response.json();
           })
           .then((data) => {
@@ -115,7 +117,7 @@ export default new Vuex.Store({
     },
     destroyToken(context) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home-update/api/logout', {
+        fetch(process.env.VUE_APP_API_ROOT + 'logout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -136,7 +138,7 @@ export default new Vuex.Store({
     },
     retrieveRooms(context) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home-update/api/rooms', {
+        fetch(process.env.VUE_APP_API_ROOT + 'rooms', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -163,7 +165,7 @@ export default new Vuex.Store({
     },
     retrieveAutomations(context) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home-update/api/automations', {
+        fetch(process.env.VUE_APP_API_ROOT + 'automations', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -187,7 +189,7 @@ export default new Vuex.Store({
     },
     retrieveUsers(context) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home-update/api/users', {
+        fetch(process.env.VUE_APP_API_ROOT + 'users', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -212,7 +214,7 @@ export default new Vuex.Store({
     },
     retrieveServer(context) {
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home-update/api/server', {
+        fetch(process.env.VUE_APP_API_ROOT + 'server', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -237,7 +239,7 @@ export default new Vuex.Store({
     },
     createAutomation(context, automation){
       return new Promise((resolve, reject) => {
-        fetch('/vasek/home-update/api/automations/create', {
+        fetch(process.env.VUE_APP_API_ROOT + 'automations/create', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -114,7 +114,7 @@
         this.$store.dispatch('retrieveRooms');
       }
 
-      fetch(`/vasek/home-update/api/widgets/${this.$route.params.id}/detail`, {
+      fetch(process.env.VUE_APP_API_ROOT + `widgets/${this.$route.params.id}/detail`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

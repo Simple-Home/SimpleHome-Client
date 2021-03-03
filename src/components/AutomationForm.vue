@@ -9,14 +9,49 @@
             <p> Name: </p>
             <input type="text" v-model="automation.name">
         </div>
-        <div v-if="!true">
-            <p> Condition: </p>
-            <select>
-                <option selected>Manual</option>
-                <option>AND</option>
-                <option>OR</option>
-            </select>
+
+        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; margin-top: 15px">
+            <div>
+                <div class="header-title" style="margin-top: 2%">
+                    <p style="margin-right: 10%; margin-top: 10px"><b> Conditions:</b></p>
+                    <button class="button is-primary button-add" v-on:click="addCondition()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div style="max-height:200px; overflow-y: auto; margin-top: 10px">
+                <ul style="margin-top: inherit; padding-left: 0px">
+                    <li style="list-style: none; margin-bottom: 5px" v-for="i in conditionsCount" :key="i">
+                        <div style="background-color: #34eb74; padding-top: 15px; padding-bottom: 10px; padding-left: 5px; border-radius: 5px">
+                            <p>{{ i }}</p>
+                        </div>
+                    </li>
+                </ul>
+                <p v-if="conditionsCount == 0" style="text-align: center">Add conditions</p>
+            </div>
         </div>
+
+        <div style="background-color: #e8e8e8; padding: 5px; border-radius: 10px; margin-top: 15px">
+            <div>
+                <div class="header-title" style="margin-top: 2%">
+                    <p style="margin-right: 10%; margin-top: 10px"><b> Actions:</b></p>
+                    <button class="button is-primary button-add" v-on:click="addAction()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div style="max-height:200px; overflow-y: auto; margin-top: 10px">
+                <ul style="margin-top: inherit; padding-left: 0px">
+                    <li style="list-style: none; margin-bottom: 5px" v-for="i in actionsCount" :key="i">
+                        <div style="background-color: #34eb74; padding-top: 15px; padding-bottom: 10px; padding-left: 5px; border-radius: 5px">
+                            <p>{{ i }}</p>
+                        </div>
+                    </li>
+                </ul>
+                <p v-if="actionsCount == 0" style="text-align: center">Add actions</p>
+            </div>
+        </div>
+
         <div class="header-small">
             <v-touch tag="a" v-on:tap="submit()">{{submitText}}</v-touch>
         </div>
@@ -29,11 +64,13 @@
         data: function(){
             return {
                 id: 0,
+                conditionsCount: 0,
+                actionsCount: 0,
                 automation: {
                     name: "",
                     condition: {
-                        operator: "",
-                        rules: {}
+                        operator: [],
+                        rules: []
                     },
                     action: {},
                     days: [],
@@ -46,6 +83,14 @@
             submit()
             {
                 this.$store.commit('createAutomation', this.automation);
+            },
+            addCondition()
+            {
+                this.conditionsCount++;
+            },
+            addAction()
+            {
+                this.actionsCount++;
             }
         },
         computed:

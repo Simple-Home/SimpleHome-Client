@@ -9,19 +9,15 @@
     </header>
 
 
-    <offline @detected-condition="amIOnline">
+    <offline @detected-condition="handleConnectivityChange">
 
-      <div slot="online" :slot-name="onlineSlot">
-        <i class="fad fa-signal-alt-slash"></i>
-        <p>( Online: {{ onLine }} )</p>
-      </div>
-
-      <div slot="offline" :slot-name="offlineSlot">
-        <i class="fad fa-signal-alt-slash"></i>
-        <p>( Online: {{ onLine }} )</p>
-      </div>
 
     </offline>
+
+    <div>
+      <i class="fad fa-signal-alt-slash"></i>
+      <p>Online: {{onLine}}</p>
+    </div>
 
     <div class="devices">
       <automation v-for="automation in automations" :automation="automation" 
@@ -42,9 +38,7 @@ export default {
     offline,
   },
   data: () => ({
-    onLine: false,
-    onlineSlot: 'online',
-    offlineSlot: 'offline',
+    onLine: false
   }),
   computed:
   {
@@ -57,9 +51,11 @@ export default {
     {
       this.$router.push('automation-form/' + 'new_form');
     },
-    amIOnline(e) {
-      this.onLine = e;
-    },
+    handleConnectivityChange(status) {
+      console.log(status);
+      this.onLine = status;
+      console.log(this.onLine);
+    }
   },
   created()
   {
@@ -67,7 +63,6 @@ export default {
     {
       this.$store.dispatch('retrieveAutomations');
     }
-    amIOnline();
   }
 }
 </script>
