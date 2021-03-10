@@ -2,7 +2,7 @@
   <div class="page" v-if="loaded">
     <div class="header-small">
       <router-link to="/"><i class="fa fa-angle-left"></i> {{room}}</router-link>
-      <router-link to="/" href="" class="text-gray">Edit</router-link>
+      <router-link :to="/device-edit/ + this.$route.params.id" href="" class="text-gray">Edit</router-link>
     </div>
     <div class="detail-header">
       <div>

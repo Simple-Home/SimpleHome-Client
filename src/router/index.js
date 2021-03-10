@@ -83,7 +83,7 @@ const routes = [
     },
   },
   {
-    path: '/device-editor/:id',
+    path: '/device-edit/:id',
     name: 'DeviceEditor',
     component: () => import('../components/DeviceEditor.vue'),
     meta: {
