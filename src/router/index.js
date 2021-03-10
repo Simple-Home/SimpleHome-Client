@@ -83,6 +83,14 @@ const routes = [
     },
   },
   {
+    path: '/device-editor/:id',
+    name: 'DeviceEditor',
+    component: () => import('../components/DeviceEditor.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     path: '/automation-form/:id',
     name: 'AutomationForm',
     component: () => import('../components/AutomationForm.vue'),
