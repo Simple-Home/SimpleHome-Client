@@ -253,7 +253,25 @@ export default new Vuex.Store({
             return response.json();
           })
       })
-    }
+    },
+    updateWidget(context, widget){
+      return new Promise((resolve, reject) => {
+        fetch(process.env.VUE_APP_API_ROOT + `widget/${widget.id}/edit`, {
+          method: 'UPDATE',
+          headers: {
+            'Content-Type': 'application/json',
+              Authorization: `Bearer ${context.state.token}`,
+          },
+          body: JSON.stringify(widget.data),
+        })
+          .then((response) => {
+            if(response.status !== 200){
+                throw new Error(`${response.status} - ${response.statusText}`);
+            }
+            return response.json();
+          })
+      })
+    },
   },
   modules: {
   },
