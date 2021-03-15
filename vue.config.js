@@ -1,7 +1,7 @@
 const {InjectManifest} = require('workbox-webpack-plugin');
 
 module.exports = {
-  publicPath: '/vasek/home-client-milanin/',
+  publicPath: process.env.VUE_APP_ROOT,
   lintOnSave: false,
   css: {
     loaderOptions: {
