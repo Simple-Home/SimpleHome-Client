@@ -23,11 +23,33 @@
                 <ul style="margin-top: inherit; padding-left: 0px">
                     <li style="list-style: none; margin-bottom: 5px" v-for="i in conditionsCount" :key="i">
                         <div style="background-color: #34eb74; padding-top: 15px; padding-bottom: 10px; padding-left: 5px; border-radius: 5px">
-                            <p>{{ i }}</p>
+                            <div>
+                                <p>{{ i }}</p>
+                                
+                                <div>
+                                    <select @change="changeWidget($event)">
+                                        Select value
+                                        <option value="" selected disabled>Select value</option>
+                                        <option v-for="widget in widgets" :value="widget.subdevice_id" :key="widget.subdevice_id">
+                                            {{widget.name}}: {{widget.value}} {{widget.unit}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <select @change="changeCondition($event)">Select condition
+                                    <option value="" selected disabled>Select condition</option>
+                                    <option :value="0">Equals</option>
+                                    <option :value="1">Bigger than</option>
+                                    <option :value="2">Less than</option> 
+                                </select>
+
+                                <input type="text">
+                            </div>
+
                         </div>
                     </li>
                 </ul>
-                <p v-if="conditionsCount == 0" style="text-align: center">Add conditions</p>
+                <p v-if="conditionsCount == 0" style="text-align: center">Add actions</p>
             </div>
         </div>
 
@@ -44,7 +66,10 @@
                 <ul style="margin-top: inherit; padding-left: 0px">
                     <li style="list-style: none; margin-bottom: 5px" v-for="i in actionsCount" :key="i">
                         <div style="background-color: #34eb74; padding-top: 15px; padding-bottom: 10px; padding-left: 5px; border-radius: 5px">
-                            <p>{{ i }}</p>
+                            <div>
+                                <p>{{ i }}</p>
+                                <button>Select device</button>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -76,6 +101,9 @@
                     days: [],
                     month: []
                 },
+                data: null,
+                loaded: false,
+                widgets: null
             }
         },
         methods:
@@ -91,7 +119,15 @@
             addAction()
             {
                 this.actionsCount++;
-            }
+            },
+            changeCondition()
+            {
+               console.log(event.target.options[event.target.options.selectedIndex].text); 
+            },
+            changeWidget()
+            {
+                console.log(event.target.options[event.target.options.selectedIndex].text);
+            },
         },
         computed:
         {
@@ -105,14 +141,22 @@
                 {
                     return 'Save';
                 }
-            }
+            },
+            getActionWidgets: function()
+            {
+            },
         },
-        created(){
+        created: function(){
 
             this.id = this.$route.params.id;
 
             if (this.$store.state.automations.length === 0) {
                 this.$store.dispatch('retrieveAutomations');
+            }
+            
+            if(this.$store.state.rooms.length === 0)
+            {
+                this.$store.dispatch('retrieveRooms');
             }
 
             if(!isNaN(this.id) && this.is != 'new_form')
@@ -123,6 +167,17 @@
                 this.automation.name = 'New automation';
             }
             
+            var devices = [];
+
+            //Load all devices
+            this.$store.state.rooms.forEach(room => {
+                room.widgets.forEach(device => {
+                    devices.push(device);
+                });
+            });
+
+            this.widgets = devices;
+            //console.log(this.widgets);
         }
     }
 </script>
