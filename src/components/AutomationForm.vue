@@ -25,7 +25,7 @@
                         <div style="background-color: #34eb74; padding-top: 15px; padding-bottom: 10px; padding-left: 5px; border-radius: 5px">
                             <div>
                                 <p>{{ i }}</p>
-                                
+
                                 <div>
                                     <select @change="changeWidget($event)">
                                         Select value
@@ -40,7 +40,7 @@
                                     <option value="" selected disabled>Select condition</option>
                                     <option :value="0">Equals</option>
                                     <option :value="1">Bigger than</option>
-                                    <option :value="2">Less than</option> 
+                                    <option :value="2">Less than</option>
                                 </select>
 
                                 <input type="text">
@@ -122,7 +122,7 @@
             },
             changeCondition()
             {
-               console.log(event.target.options[event.target.options.selectedIndex].text); 
+               console.log(event.target.options[event.target.options.selectedIndex].text);
             },
             changeWidget()
             {
@@ -146,14 +146,14 @@
             {
             },
         },
-        created: function(){
+        mounted: function(){
 
             this.id = this.$route.params.id;
 
             if (this.$store.state.automations.length === 0) {
                 this.$store.dispatch('retrieveAutomations');
             }
-            
+
             if(this.$store.state.rooms.length === 0)
             {
                 this.$store.dispatch('retrieveRooms');
@@ -166,7 +166,7 @@
             {
                 this.automation.name = 'New automation';
             }
-            
+
             var devices = [];
 
             //Load all devices

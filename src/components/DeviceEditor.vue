@@ -8,9 +8,9 @@
         <div style="display: flex">
             <p>Name: {{deviceData.data.name}}</p>
             <input type="text" v-model="deviceData.data.name">
-        </div> 
+        </div>
         <button v-on:click="save()">Save</button>
-        
+
     </div>
 </template>
 
@@ -42,12 +42,12 @@ export default {
             //console.log(this.deviceData);
             let widgetData = {};
 
-                        
+
 
             this.$store.dispatch('updateWidget', this.deviceData);
         },
     },
-    created: function() {
+    mounted: function() {
 
         this.deviceData.id = this.$route.params.id;
 
@@ -74,7 +74,7 @@ export default {
             this.loaded = true;
         }).then(() => {
 
-        
+
         let ret = {
                 icon: '',
                 name: '-',
@@ -93,20 +93,20 @@ export default {
                 })
             }
         }
-        
+
         this.originalData.data.name = ret.name;
         this.originalData.data.icon = ret.icon;
         this.originalData.data.room_id = ret.room_id;
 
         this.deviceData.data.name = ret.name;
         this.deviceData.data.icon = ret.icon;
-        this.deviceData.data.room_id = ret.room_id;        
+        this.deviceData.data.room_id = ret.room_id;
 
         });
     },
     computed: {
 
-        room() 
+        room()
         {
             if(this.loaded && this.$store.state.rooms.length){
                 return this.$store.state.rooms.find(room => room.room_id === this.data.room_id).name;

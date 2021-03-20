@@ -20,7 +20,7 @@
     </div>
 
     <div class="devices">
-      <automation v-for="automation in automations" :automation="automation" 
+      <automation v-for="automation in automations" :automation="automation"
       :key="automation.automation_id"/>
     </div>
 
@@ -57,7 +57,7 @@ export default {
       console.log(this.onLine);
     }
   },
-  created()
+  mounted()
   {
     if(this.$store.state.automations.length === 0)
     {

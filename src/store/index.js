@@ -256,7 +256,7 @@ export default new Vuex.Store({
     },
     updateWidget(context, widget){
       return new Promise((resolve, reject) => {
-        fetch(process.env.VUE_APP_API_ROOT + `widget/${widget.id}/edit`, {
+        fetch(process.env.VUE_APP_API_ROOT + `widgets/${widget.id}/edit`, {
           method: 'UPDATE',
           headers: {
             'Content-Type': 'application/json',
